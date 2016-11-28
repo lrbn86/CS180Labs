@@ -10,11 +10,11 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class Counter2 implements Counter {
 
-    private AtomicInteger value = new AtomicInteger(0);
+    private AtomicInteger value = new AtomicInteger();
 
     @Override
     public void inc() {
-        value.addAndGet(value.get());
+        value.incrementAndGet();
     }
 
     @Override
