@@ -1,4 +1,5 @@
 import java.io.File;
+import java.util.Arrays;
 
 /**
  * Recursion.java
@@ -19,35 +20,43 @@ public class Recursion {
      * @param matrix The matrix to find the determinant of
      * @return The determinant of the argument matrix
      */
-    public static int determinant(int[][] matrix){
+    public static int determinant(int[][] matrix) {
 
-        // matrix must be nxn
-        if (matrix.length == matrix[0].length) {
+        int d = 0;
 
-            // if matrix has size 1 x 1, the determinant is the single element in the matrix
-            if (matrix.length == 1) {
+        int length = matrix.length;
 
-                return matrix[matrix.length - 1][matrix[matrix.length - 1].length - 1];
+        int[][] A = new int[length][length]; // create minor matrix
 
-            } else {
+        // Base case
+        if (length == 1) {
 
-                int d = 0; // determinant variable
-
-
-
-            }
-
+            return matrix[0][0];
 
         } else {
 
-            System.err.println("Matrix must have an equal number of rows and columns.");
-            return -1;
+            for (int i = 0; i < length; i++) {
+
+                if (i == 0) {
+                    length--;
+                    continue; // skip the first row
+                }
+
+                for (int j = 0; j < length; j++) {
+
+                    if (j == 0) {
+                        length--;
+                        continue; // skip the first column
+                    }
+
+                }
+
+            }
 
         }
 
-        return 0;
+        return d;
     }
-
 
     /**
      * Counts the total number of files in the given directory recursively.
@@ -57,18 +66,49 @@ public class Recursion {
      */
     public static int filecount(File f) {
 
-        if (!f.isDirectory()) {
+        int numOfFiles = 0;
+
+        File[] files = f.listFiles();
+
+        // Base case
+        if (f.isFile()) {
+
+            return 1;
 
         } else {
 
+            for (File file : files) { // for each file in files
 
+                if (file.isDirectory()) { // if that file is a directory
 
+                    numOfFiles += filecount(file); // make recursive call to that directory and store/increment into counter
+
+                } else { // if that file is a file
+
+                    numOfFiles++; // increment counter
+
+                }
+            }
         }
 
-        return 0;
+        return numOfFiles;
     }
 
+    /**
+     * Program's Main Entry Point
+     *
+     * @param args commandline arguments
+     */
     public static void main(String[] args) {
+
+        int[][] m = {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
+        };
+
+        System.out.println(determinant(m));
+
     }
 
 }
