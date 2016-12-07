@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 /**
  * Evaluator.java
  *
@@ -9,11 +11,22 @@
  *
  */
 public class Evaluator {
+
+    /**
+     * Evaluate a Reverse Polish Notation (RPN) expression
+     *
+     * @param RPNexpression The RPN expression will be a space-separated String
+     * @return result
+     */
+    public static double evaluate (String RPNexpression) {
+
+        Stack<Double> stack = new Stack<>();
+
+        stack.push(5.0);
+
+
+
+        return 0.0;
+    }
+
 }
-
-
-/**
- * Purpose of Method
- * @param parameters (may be more than one)
- * @return (if not void)
- * Methods*/
